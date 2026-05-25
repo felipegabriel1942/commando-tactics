@@ -55,6 +55,26 @@ region = Rect2(32, 32, 16, 32)
 atlas = ExtResource("1_oul6g")
 region = Rect2(48, 32, 16, 32)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_tqiix"]
+atlas = ExtResource("1_oul6g")
+region = Rect2(16, 96, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wodsf"]
+atlas = ExtResource("1_oul6g")
+region = Rect2(16, 128, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_32hag"]
+atlas = ExtResource("1_oul6g")
+region = Rect2(16, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e7oew"]
+atlas = ExtResource("1_oul6g")
+region = Rect2(16, 64, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kb6p2"]
+atlas = ExtResource("1_oul6g")
+region = Rect2(48, 32, 16, 32)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_kqu6x"]
 animations = [{
 "frames": [{
@@ -115,6 +135,46 @@ animations = [{
 "loop": true,
 "name": &"move_up",
 "speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tqiix")
+}],
+"loop": true,
+"name": &"shoot_diagonal_down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wodsf")
+}],
+"loop": true,
+"name": &"shoot_diagonal_up",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_32hag")
+}],
+"loop": true,
+"name": &"shoot_down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e7oew")
+}],
+"loop": true,
+"name": &"shoot_side",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kb6p2")
+}],
+"loop": true,
+"name": &"shoot_up",
+"speed": 5.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rkbax"]
@@ -127,9 +187,8 @@ script = ExtResource("1_rkbax")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2133000776]
 sprite_frames = SubResource("SpriteFrames_kqu6x")
-animation = &"move_up"
+animation = &"shoot_down"
 autoplay = "idle_side"
-frame_progress = 0.08502503
 centered = false
 offset = Vector2(0, -4)
 
@@ -140,5 +199,8 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1881345354]
 position = Vector2(8, 24)
 shape = SubResource("RectangleShape2D_rkbax")
+
+[node name="Muzzle" type="Marker2D" parent="." unique_id=2086007184]
+position = Vector2(3, 21)
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_body_entered"]

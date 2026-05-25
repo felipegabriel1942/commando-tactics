@@ -25,24 +25,16 @@ func on_object_spawned(object: WorldObject) -> void:
 	for cell in object.occupied_cells:
 		grid.set_point_solid(cell, false)
 		grid.update()
-		occupied_cells[cell] = object
-				
-		if debug:
-			highlight_cell(map_to_local(cell), Color(1, 0, 1, 0.5))
+		occupy_cell(object, cell)
+
 
 func on_player_spawned(player: Player) -> void:
 	for cell in player.occupied_cells:
-		occupied_cells[cell] = player
-		
-		if debug:
-			highlight_cell(map_to_local(cell), Color(1, 0, 1, 0.5))
+		occupy_cell(player, cell)
 
 func on_enemy_spawned(enemy: Enemy) -> void:
 	for cell in enemy.occupied_cells:
-		occupied_cells[cell] = enemy
-		
-		if debug:
-			highlight_cell(map_to_local(cell), Color(1, 0, 1, 0.5))
+		occupy_cell(enemy, cell)
 
 func get_movable_cells(current_pos: Vector2, range: int) -> Array[Vector2]:
 	var movable_cells: Array[Vector2i] = []
@@ -156,15 +148,29 @@ func get_path_to_position(current_pos: Vector2, target_pos: Vector2) -> Array[Ve
 		)
 		
 		if debug:
-			highlight_cell(map_to_local(cell), Color(0, 0, 1, 0.5))
+			highlight_cell(map_to_local(cell), Color(0, 0, 1, 0.5), "player_path")
 
 	return mapped_path
 
 func free_cell(cell: Vector2i) -> void:
 	occupied_cells.erase(cell)
-
+	
+	highlight_occupied_cells()
 func occupy_cell(object: Node2D, cell: Vector2i) -> void:
 	occupied_cells[cell] = object
+
+	highlight_occupied_cells()
+
+func highlight_occupied_cells() -> void:
+	if !debug:
+		return
+	
+	clear_highlighted_cells("occupied_cells")
+	
+	for cell in occupied_cells.keys():
+		highlight_cell(
+			map_to_local(cell), Color(1, 0, 1, 0.5), "occupied_cells"
+	)
 
 func get_neighbors(cell: Vector2i) -> Array[Vector2i]:
 	return [
@@ -180,7 +186,7 @@ func local_to_map(position: Vector2) -> Vector2i:
 func map_to_local(position: Vector2i) -> Vector2:
 	return tile_map_layer.get_child(0).map_to_local(position)
 
-func highlight_cell(cell: Vector2, color: Color) -> void:
+func highlight_cell(cell: Vector2, color: Color, group: String) -> void:
 	var rect = ColorRect.new()
 	rect.color = color
 	rect.position = Vector2(cell.x - 8, cell.y - 8)
@@ -188,11 +194,17 @@ func highlight_cell(cell: Vector2, color: Color) -> void:
 	rect.z_index = 0
 	rect.y_sort_enabled = true
 	rect.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	rect.add_to_group("highlighted_cell")
+	rect.add_to_group(group)
 	get_parent().add_child(rect)
 
-func clear_highlighted_cells() -> void:
-	var nodes = get_tree().get_nodes_in_group("highlighted_cell")
+func clear_highlighted_cells(group: String) -> void:
+	var nodes = get_tree().get_nodes_in_group(group)
 	
 	for node in nodes:
 		node.queue_free()
+
+func get_object_at_position(position: Vector2) -> Node2D:
+	if occupied_cells.has(local_to_map(position)):
+		return occupied_cells[local_to_map(position)]
+	else:
+		return null

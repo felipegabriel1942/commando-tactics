@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://bj1m0sc6ca5nx"]
 
+[ext_resource type="Script" uid="uid://sa30l2iys6wr" path="res://bullets/bullet.gd" id="1_128l6"]
 [ext_resource type="Texture2D" uid="uid://bsmmkkj6jos2c" path="res://assets/sprites/Effects/Weapons Flash and Bullets/player_weapons_bullet.png" id="1_mwha0"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_128l6"]
@@ -24,8 +25,26 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_128l6"]
+size = Vector2(16, 16)
+
 [node name="PlayerWeaponBullet" type="Node2D" unique_id=1860395402]
+z_index = 1
+y_sort_enabled = true
+script = ExtResource("1_128l6")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=851173982]
 sprite_frames = SubResource("SpriteFrames_2q85y")
+autoplay = "default"
 frame_progress = 0.89071995
+centered = false
+
+[node name="Area2D" type="Area2D" parent="." unique_id=87360254]
+collision_layer = 16
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=487404572]
+position = Vector2(8, 8)
+shape = SubResource("RectangleShape2D_128l6")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_body_entered"]

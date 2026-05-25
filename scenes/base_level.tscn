@@ -120,7 +120,7 @@ position = Vector2(144, 80)
 
 [node name="Player" parent="YSortRoot" unique_id=2040064568 instance=ExtResource("1_6tisa")]
 z_index = 1
-position = Vector2(128, 160)
+position = Vector2(112, 144)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=59750863]
 position = Vector2(160, 96)

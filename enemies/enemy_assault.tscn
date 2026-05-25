@@ -2,6 +2,12 @@
 
 [ext_resource type="Texture2D" uid="uid://dkjed8rm7fifl" path="res://assets/sprites/Characters/Enemies/enemy_assault_rifle.png" id="1_6naxh"]
 [ext_resource type="Script" uid="uid://sbr0nd4bhpv3" path="res://enemies/enemy.gd" id="1_l8p1m"]
+[ext_resource type="Shader" uid="uid://c4qxiegmdr0ke" path="res://enemies/flash.gdshader" id="2_mw2g8"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gc12c"]
+shader = ExtResource("2_mw2g8")
+shader_parameter/active = false
+shader_parameter/flash_color = Color(1, 1, 1, 1)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_l8p1m"]
 atlas = ExtResource("1_6naxh")
@@ -27,6 +33,7 @@ y_sort_enabled = true
 script = ExtResource("1_l8p1m")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=131608850]
+material = SubResource("ShaderMaterial_gc12c")
 sprite_frames = SubResource("SpriteFrames_qcvcl")
 animation = &"idle_side"
 autoplay = "idle_side"
