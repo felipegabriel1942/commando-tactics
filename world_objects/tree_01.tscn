@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://8dlbdbjcp483"]
+
+[ext_resource type="Script" uid="uid://34kk10a5gcnm" path="res://world_objects/world_object.gd" id="1_ln5gk"]
+[ext_resource type="Texture2D" uid="uid://e38hxs0c7xhw" path="res://assets/sprites/Tileset/tileset.png" id="1_q6qsk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q6qsk"]
+size = Vector2(32, 16)
+
+[node name="Tree01" type="Node2D" unique_id=1591947738]
+z_index = 1
+y_sort_enabled = true
+script = ExtResource("1_ln5gk")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=857338795]
+texture = ExtResource("1_q6qsk")
+centered = false
+offset = Vector2(0, -4)
+region_enabled = true
+region_rect = Rect2(112, 176, 64, 64)
+
+[node name="Area2D" type="Area2D" parent="." unique_id=871590265]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=853487938]
+position = Vector2(32, 56)
+shape = SubResource("RectangleShape2D_q6qsk")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_body_entered"]

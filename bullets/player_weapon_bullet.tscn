@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://bj1m0sc6ca5nx"]
+
+[ext_resource type="Texture2D" uid="uid://bsmmkkj6jos2c" path="res://assets/sprites/Effects/Weapons Flash and Bullets/player_weapons_bullet.png" id="1_mwha0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_128l6"]
+atlas = ExtResource("1_mwha0")
+region = Rect2(0, 0, 5, 5)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0m24i"]
+atlas = ExtResource("1_mwha0")
+region = Rect2(5, 0, 5, 5)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2q85y"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_128l6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0m24i")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="PlayerWeaponBullet" type="Node2D" unique_id=1860395402]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=851173982]
+sprite_frames = SubResource("SpriteFrames_2q85y")
+frame_progress = 0.89071995

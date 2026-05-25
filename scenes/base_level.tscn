@@ -1,0 +1,131 @@
+[gd_scene format=4 uid="uid://bodqstkpelp8p"]
+
+[ext_resource type="PackedScene" uid="uid://6akp3rbbv0n7" path="res://player/player.tscn" id="1_6tisa"]
+[ext_resource type="TileSet" uid="uid://cy6r68g84vmrm" path="res://resources/tile_set.tres" id="1_dbkse"]
+[ext_resource type="Script" uid="uid://b56bjqeqri817" path="res://scenes/base_level.gd" id="1_earhg"]
+[ext_resource type="PackedScene" uid="uid://8dlbdbjcp483" path="res://world_objects/tree_01.tscn" id="2_0n1tn"]
+[ext_resource type="PackedScene" uid="uid://c20ckeq5esydl" path="res://world_objects/tree_02.tscn" id="3_oox4p"]
+[ext_resource type="PackedScene" uid="uid://cfq8aa2xo72hu" path="res://world_objects/sand_bag_01.tscn" id="4_k2uud"]
+[ext_resource type="PackedScene" uid="uid://bwvnhwqn2bpvs" path="res://world_objects/barrel_01.tscn" id="5_3aqo6"]
+[ext_resource type="PackedScene" uid="uid://d37qg0nignv2m" path="res://managers/grid_manager.tscn" id="7_rlct4"]
+[ext_resource type="PackedScene" uid="uid://djn1fyoutarvs" path="res://enemies/enemy_assault.tscn" id="7_u6ue0"]
+
+[node name="BaseLevel" type="Node2D" unique_id=641934856]
+script = ExtResource("1_earhg")
+
+[node name="YSortRoot" type="Node2D" parent="." unique_id=1323094573]
+y_sort_enabled = true
+
+[node name="RootMapLayer" type="TileMapLayer" parent="YSortRoot" unique_id=1703041925]
+y_sort_enabled = true
+tile_set = ExtResource("1_dbkse")
+
+[node name="GroundMapLayer" type="TileMapLayer" parent="YSortRoot/RootMapLayer" unique_id=636077578]
+y_sort_enabled = true
+tile_map_data = PackedByteArray("AAAAAAAAAAAVAAoAAAAAAAEAAAAVAAoAAAAAAAIAAAAVAAoAAAABAAIAAAAVAAoAAAABAAMAAAAVAAoAAAACAAQAAAAVAAoAAAACAAUAAAAVAAoAAAADAAYAAAAXABIAAAADAAcAAAAXABMAAAAEAAcAAAAYABMAAAAEAAgAAAAYABMAAAAFAAgAAAAYABMAAAAGAAgAAAAYABMAAAAGAAcAAAAYABMAAAAFAAcAAAAYABMAAAAAAAMAAAAVAAoAAAAAAAQAAAAVAAoAAAAAAAUAAAAVAAoAAAAAAAYAAAAVAAoAAAAAAAcAAAAVAAoAAAAAAAgAAAAVAAoAAAAAAAkAAAAVAAoAAAAAAAoAAAAVAAoAAAAAAAsAAAAVAAoAAAABAAAAAAAVAAoAAAABAAEAAAAVAAoAAAABAAQAAAAVAAoAAAABAAUAAAAVAAoAAAABAAYAAAAVAAoAAAABAAcAAAAVAAoAAAABAAgAAAAVAAoAAAABAAkAAAAVAAoAAAABAAoAAAAVAAoAAAABAAsAAAAVAAoAAAACAAAAAAAVAAoAAAACAAEAAAAVAAoAAAACAAIAAAAVAAoAAAACAAMAAAAVAAoAAAACAAYAAAAVAAoAAAACAAcAAAAVAAoAAAACAAgAAAAVAAoAAAACAAkAAAAVAAoAAAACAAoAAAAVAAoAAAACAAsAAAAVAAoAAAADAAAAAAAVAAoAAAADAAEAAAAVAAoAAAADAAIAAAAVAAoAAAADAAMAAAAVAAoAAAADAAQAAAAVAAoAAAADAAUAAAAVAAoAAAADAAgAAAAXABMAAAADAAkAAAAXABMAAAADAAoAAAAXABMAAAADAAsAAAAXABQAAAAEAAAAAAAVAAoAAAAEAAEAAAAVAAoAAAAEAAIAAAAVAAoAAAAEAAMAAAAVAAoAAAAEAAQAAAAVAAoAAAAEAAUAAAAVAAoAAAAEAAYAAAAYABIAAAAEAAkAAAAYABMAAAAEAAoAAAAYABMAAAAEAAsAAAAYABQAAAAFAAAAAAAVAAoAAAAFAAEAAAAVAAoAAAAFAAIAAAAVAAoAAAAFAAMAAAAVAAoAAAAFAAQAAAAVAAoAAAAFAAUAAAAVAAoAAAAFAAYAAAAYABIAAAAFAAkAAAAYABMAAAAFAAoAAAAYABMAAAAFAAsAAAAYABMAAAAGAAAAAAAVAAoAAAAGAAEAAAAVAAoAAAAGAAIAAAAVAAoAAAAGAAMAAAAVAAoAAAAGAAQAAAAVAAoAAAAGAAUAAAAVAAoAAAAGAAYAAAAYABIAAAAGAAkAAAAYABMAAAAGAAoAAAAYABMAAAAGAAsAAAAYABMAAAAHAAAAAAAVAAoAAAAHAAEAAAAVAAoAAAAHAAIAAAAVAAoAAAAHAAMAAAAVAAoAAAAHAAQAAAAVAAoAAAAHAAUAAAAVAAoAAAAHAAYAAAAYABIAAAAHAAcAAAAYABMAAAAHAAgAAAAYABMAAAAHAAkAAAAYABMAAAAHAAoAAAAYABMAAAAHAAsAAAAYABMAAAAIAAAAAAAVAAoAAAAIAAEAAAAVAAoAAAAIAAIAAAAVAAoAAAAIAAMAAAAVAAoAAAAIAAQAAAAVAAoAAAAIAAUAAAAVAAoAAAAIAAYAAAAZABIAAAAIAAcAAAAZABMAAAAIAAgAAAAaABIAAAAIAAkAAAAYABMAAAAIAAoAAAAYABMAAAAIAAsAAAAYABMAAAAJAAAAAAAVAAoAAAAJAAEAAAAVAAoAAAAJAAIAAAAVAAoAAAAJAAMAAAAVAAoAAAAJAAQAAAAVAAoAAAAJAAUAAAAVAAoAAAAJAAYAAAAVAAoAAAAJAAcAAAAVAAoAAAAJAAgAAAAYABIAAAAJAAkAAAAYABMAAAAJAAoAAAAYABMAAAAJAAsAAAAYABMAAAAKAAAAAAAVAAoAAAAKAAEAAAAVAAoAAAAKAAIAAAAVAAoAAAAKAAMAAAAVAAoAAAAKAAQAAAAVAAoAAAAKAAUAAAAVAAoAAAAKAAYAAAAVAAoAAAAKAAcAAAAVAAoAAAAKAAgAAAAYABIAAAAKAAkAAAAYABMAAAAKAAoAAAAYABMAAAAKAAsAAAAYABMAAAALAAAAAAAVAAoAAAALAAEAAAAVAAoAAAALAAIAAAAVAAoAAAALAAMAAAAVAAoAAAALAAQAAAAVAAoAAAALAAUAAAAVAAoAAAALAAYAAAAVAAoAAAALAAcAAAAVAAoAAAALAAgAAAAYABIAAAALAAkAAAAYABMAAAALAAoAAAAYABMAAAALAAsAAAAYABMAAAAMAAAAAAAVAAoAAAAMAAEAAAAVAAoAAAAMAAIAAAAVAAoAAAAMAAMAAAAVAAoAAAAMAAQAAAAXABIAAAAMAAUAAAAXABMAAAAMAAYAAAAXABMAAAAMAAcAAAAXABMAAAAMAAgAAAAbABIAAAAMAAkAAAAYABMAAAAMAAoAAAAYABMAAAAMAAsAAAAYABMAAAANAAAAAAAVAAoAAAANAAEAAAAVAAoAAAANAAIAAAAVAAoAAAANAAMAAAAVAAoAAAANAAQAAAAYABIAAAANAAUAAAAYABMAAAANAAYAAAAYABMAAAANAAcAAAAYABMAAAANAAgAAAAYABMAAAANAAkAAAAYABMAAAANAAoAAAAYABMAAAANAAsAAAAYABMAAAAOAAAAAAAVAAoAAAAOAAEAAAAVAAoAAAAOAAIAAAAVAAoAAAAOAAMAAAAVAAoAAAAOAAQAAAAYABIAAAAOAAUAAAAYABMAAAAOAAYAAAAYABMAAAAOAAcAAAAYABMAAAAOAAgAAAAYABMAAAAOAAkAAAAYABMAAAAOAAoAAAAYABMAAAAOAAsAAAAYABMAAAAPAAAAAAAVAAoAAAAPAAEAAAAVAAoAAAAPAAIAAAAVAAoAAAAPAAMAAAAVAAoAAAAPAAQAAAAYABIAAAAPAAUAAAAYABMAAAAPAAYAAAAYABMAAAAPAAcAAAAYABMAAAAPAAgAAAAYABMAAAAPAAkAAAAYABMAAAAPAAoAAAAYABMAAAAPAAsAAAAYABMAAAAQAAAAAAAVAAoAAAAQAAEAAAAVAAoAAAAQAAIAAAAVAAoAAAAQAAMAAAAVAAoAAAAQAAQAAAAYABIAAAAQAAUAAAAYABMAAAAQAAYAAAAYABMAAAAQAAcAAAAYABMAAAAQAAgAAAAYABMAAAAQAAkAAAAYABQAAAAQAAoAAAAVAAoAAAAQAAsAAAAVAAoAAAARAAAAAAAVAAoAAAARAAEAAAAVAAoAAAARAAIAAAAVAAoAAAARAAMAAAAVAAoAAAARAAQAAAAZABIAAAARAAUAAAAZABMAAAARAAYAAAAZABMAAAARAAcAAAAZABMAAAARAAgAAAAZABMAAAARAAkAAAAZABQAAAARAAoAAAAVAAoAAAARAAsAAAAVAAoAAAASAAAAAAAVAAoAAAASAAEAAAAVAAoAAAASAAIAAAAVAAoAAAASAAMAAAAVAAoAAAASAAQAAAAVAAoAAAASAAUAAAAVAAoAAAASAAYAAAAVAAoAAAASAAcAAAAVAAoAAAASAAgAAAAVAAoAAAASAAkAAAAVAAoAAAASAAoAAAAVAAoAAAASAAsAAAAVAAoAAAATAAAAAAAVAAoAAAATAAEAAAAVAAoAAAATAAIAAAAVAAoAAAATAAMAAAAVAAoAAAATAAQAAAAVAAoAAAATAAUAAAAVAAoAAAATAAYAAAAVAAoAAAATAAcAAAAVAAoAAAATAAgAAAAVAAoAAAATAAkAAAAVAAoAAAATAAoAAAAVAAoAAAATAAsAAAAVAAoAAAA=")
+tile_set = ExtResource("1_dbkse")
+
+[node name="DecorationMapLayer" type="TileMapLayer" parent="YSortRoot/RootMapLayer" unique_id=62260223]
+y_sort_enabled = true
+tile_map_data = PackedByteArray("AAAFAAIAAAAiAAMAAAAFAAEAAAAiAAMAAAAFAAAAAAAiAAMAAAASAAMAAAAiAAMAAAASAAIAAAAiAAMAAAASAAEAAAAiAAMAAAASAAAAAAAiAAMAAAA=")
+tile_set = ExtResource("1_dbkse")
+
+[node name="WorldObjects" type="Node2D" parent="YSortRoot" unique_id=1846310588]
+y_sort_enabled = true
+
+[node name="Trees" type="Node2D" parent="YSortRoot/WorldObjects" unique_id=1009064851]
+y_sort_enabled = true
+
+[node name="Tree01" parent="YSortRoot/WorldObjects/Trees" unique_id=1591947738 instance=ExtResource("2_0n1tn")]
+
+[node name="Tree02" parent="YSortRoot/WorldObjects/Trees" unique_id=1797740805 instance=ExtResource("3_oox4p")]
+position = Vector2(16, 96)
+
+[node name="Tree03" parent="YSortRoot/WorldObjects/Trees" unique_id=1607507379 instance=ExtResource("3_oox4p")]
+position = Vector2(304, 80)
+
+[node name="Tree04" parent="YSortRoot/WorldObjects/Trees" unique_id=183729688 instance=ExtResource("3_oox4p")]
+position = Vector2(112, 128)
+
+[node name="Tree05" parent="YSortRoot/WorldObjects/Trees" unique_id=2138125671 instance=ExtResource("2_0n1tn")]
+position = Vector2(192, 80)
+
+[node name="SandBags" type="Node2D" parent="YSortRoot/WorldObjects" unique_id=420447316]
+y_sort_enabled = true
+
+[node name="SandBag01" parent="YSortRoot/WorldObjects/SandBags" unique_id=1483311675 instance=ExtResource("4_k2uud")]
+position = Vector2(64, 16)
+
+[node name="SandBag02" parent="YSortRoot/WorldObjects/SandBags" unique_id=1852538301 instance=ExtResource("4_k2uud")]
+position = Vector2(64, 0)
+
+[node name="SandBag03" parent="YSortRoot/WorldObjects/SandBags" unique_id=2046079923 instance=ExtResource("4_k2uud")]
+position = Vector2(64, 48)
+
+[node name="SandBag04" parent="YSortRoot/WorldObjects/SandBags" unique_id=1021363465 instance=ExtResource("4_k2uud")]
+position = Vector2(80, 48)
+
+[node name="SandBag05" parent="YSortRoot/WorldObjects/SandBags" unique_id=1975300740 instance=ExtResource("4_k2uud")]
+position = Vector2(96, 48)
+
+[node name="SandBag06" parent="YSortRoot/WorldObjects/SandBags" unique_id=841040450 instance=ExtResource("4_k2uud")]
+position = Vector2(112, 48)
+
+[node name="SandBag07" parent="YSortRoot/WorldObjects/SandBags" unique_id=683237033 instance=ExtResource("4_k2uud")]
+position = Vector2(272, 16)
+
+[node name="SandBag16" parent="YSortRoot/WorldObjects/SandBags" unique_id=1928797712 instance=ExtResource("4_k2uud")]
+position = Vector2(272, 0)
+
+[node name="SandBag09" parent="YSortRoot/WorldObjects/SandBags" unique_id=301649756 instance=ExtResource("4_k2uud")]
+position = Vector2(192, 48)
+
+[node name="SandBag10" parent="YSortRoot/WorldObjects/SandBags" unique_id=1579511019 instance=ExtResource("4_k2uud")]
+position = Vector2(272, 32)
+
+[node name="SandBag11" parent="YSortRoot/WorldObjects/SandBags" unique_id=716481928 instance=ExtResource("4_k2uud")]
+position = Vector2(208, 48)
+
+[node name="SandBag12" parent="YSortRoot/WorldObjects/SandBags" unique_id=873677518 instance=ExtResource("4_k2uud")]
+position = Vector2(224, 48)
+
+[node name="SandBag13" parent="YSortRoot/WorldObjects/SandBags" unique_id=277352640 instance=ExtResource("4_k2uud")]
+position = Vector2(240, 48)
+
+[node name="SandBag14" parent="YSortRoot/WorldObjects/SandBags" unique_id=1664681190 instance=ExtResource("4_k2uud")]
+position = Vector2(256, 48)
+
+[node name="SandBag15" parent="YSortRoot/WorldObjects/SandBags" unique_id=1437466002 instance=ExtResource("4_k2uud")]
+position = Vector2(272, 48)
+
+[node name="SandBag08" parent="YSortRoot/WorldObjects/SandBags" unique_id=673967819 instance=ExtResource("4_k2uud")]
+position = Vector2(64, 32)
+
+[node name="Barrels" type="Node2D" parent="YSortRoot/WorldObjects" unique_id=1085822801]
+y_sort_enabled = true
+
+[node name="Barrel01" parent="YSortRoot/WorldObjects/Barrels" unique_id=149472154 instance=ExtResource("5_3aqo6")]
+position = Vector2(80, 16)
+
+[node name="Barrel02" parent="YSortRoot/WorldObjects/Barrels" unique_id=1551653858 instance=ExtResource("5_3aqo6")]
+position = Vector2(80, 32)
+
+[node name="Barrel03" parent="YSortRoot/WorldObjects/Barrels" unique_id=188944872 instance=ExtResource("5_3aqo6")]
+position = Vector2(256, 32)
+
+[node name="Enemies" type="Node2D" parent="YSortRoot" unique_id=333342057]
+
+[node name="EnemyAssault" parent="YSortRoot/Enemies" unique_id=1578889469 instance=ExtResource("7_u6ue0")]
+position = Vector2(144, 80)
+
+[node name="Player" parent="YSortRoot" unique_id=2040064568 instance=ExtResource("1_6tisa")]
+z_index = 1
+position = Vector2(128, 160)
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=59750863]
+position = Vector2(160, 96)
+
+[node name="GridManager" parent="." unique_id=1116903227 node_paths=PackedStringArray("tile_map_layer", "world_ojects") instance=ExtResource("7_rlct4")]
+tile_map_layer = NodePath("../YSortRoot/RootMapLayer")
+world_ojects = NodePath("../YSortRoot/WorldObjects")
+debug = true

@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://cfq8aa2xo72hu"]
+
+[ext_resource type="Texture2D" uid="uid://e38hxs0c7xhw" path="res://assets/sprites/Tileset/tileset.png" id="1_ednry"]
+[ext_resource type="Script" uid="uid://34kk10a5gcnm" path="res://world_objects/world_object.gd" id="1_nnlpg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ednry"]
+size = Vector2(16, 16)
+
+[node name="SandBag01" type="Node2D" unique_id=1483311675]
+z_index = 1
+y_sort_enabled = true
+script = ExtResource("1_nnlpg")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=879920492]
+texture = ExtResource("1_ednry")
+centered = false
+region_enabled = true
+region_rect = Rect2(512, 64, 16, 16)
+
+[node name="Area2D" type="Area2D" parent="." unique_id=430678831]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1176036175]
+position = Vector2(8, 8)
+shape = SubResource("RectangleShape2D_ednry")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_body_entered"]
