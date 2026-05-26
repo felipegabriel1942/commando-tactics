@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="CharacterData" format=3 uid="uid://dnvm716fk80wb"]
+
+[ext_resource type="Script" uid="uid://c62acpni5mspq" path="res://scripts/character_data.gd" id="1_wd03v"]
+
+[resource]
+script = ExtResource("1_wd03v")
+health = 10
+movement_range = 4
+character_name = "Player"
+metadata/_custom_type_script = "uid://c62acpni5mspq"

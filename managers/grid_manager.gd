@@ -20,13 +20,13 @@ func _ready() -> void:
 	GlobalEvents.object_spawned.connect(on_object_spawned)
 	GlobalEvents.player_spawned.connect(on_player_spawned)
 	GlobalEvents.enemy_spawned.connect(on_enemy_spawned)
+	GlobalEvents.enemy_died.connect(on_enemy_died)
 	
 func on_object_spawned(object: WorldObject) -> void:
 	for cell in object.occupied_cells:
 		grid.set_point_solid(cell, false)
 		grid.update()
 		occupy_cell(object, cell)
-
 
 func on_player_spawned(player: Player) -> void:
 	for cell in player.occupied_cells:
@@ -35,6 +35,10 @@ func on_player_spawned(player: Player) -> void:
 func on_enemy_spawned(enemy: Enemy) -> void:
 	for cell in enemy.occupied_cells:
 		occupy_cell(enemy, cell)
+
+func on_enemy_died(enemy: Enemy) -> void:
+	for cell in enemy.occupied_cells:
+		free_cell(cell)
 
 func get_movable_cells(current_pos: Vector2, range: int) -> Array[Vector2]:
 	var movable_cells: Array[Vector2i] = []

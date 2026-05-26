@@ -37,6 +37,9 @@ var facing_direction := FacingDirectionEnum.FacingDirection.RIGHT
 
 const PLAYER_WEAPON_BULLET = preload("uid://bj1m0sc6ca5nx")
 
+func _ready() -> void:
+	randomize()
+
 func move(path: Array[Vector2], tile_map: TileMapLayer) -> void:
 	if path.is_empty() or is_moving:
 		return
@@ -104,7 +107,7 @@ func shoot(target: Enemy) -> void:
 	muzzle.position = MUZZLE_POSITIONS[facing_direction]
 	
 	# calcular se acertou ou não aqui
-	var hit := true
+	var hit := did_hit(95, 5)
 	
 	_update_attack_visuals()
 	
@@ -152,6 +155,15 @@ func _spawn_bullet(target: Enemy, hit: bool) -> void:
 	bullet.hit = hit
 
 	get_tree().current_scene.add_child(bullet)
+
+# Mover depois para um serviço/manager
+func did_hit(attacker_accuracy: int, target_evasion: int) -> bool:
+	var hit_chance = attacker_accuracy - target_evasion
+	
+	hit_chance = clamp(hit_chance, 5, 95)
+	var roll = randi_range(1, 100)
+	
+	return roll <= hit_chance
 
 func _on_body_entered(body: Node2D) -> void:
 	if body is TileMapLayer:

@@ -118,6 +118,12 @@ position = Vector2(256, 32)
 [node name="EnemyAssault" parent="YSortRoot/Enemies" unique_id=1578889469 instance=ExtResource("7_u6ue0")]
 position = Vector2(144, 80)
 
+[node name="EnemyAssault2" parent="YSortRoot/Enemies" unique_id=65415751 instance=ExtResource("7_u6ue0")]
+position = Vector2(192, 16)
+
+[node name="EnemyAssault3" parent="YSortRoot/Enemies" unique_id=673828209 instance=ExtResource("7_u6ue0")]
+position = Vector2(112, 16)
+
 [node name="Player" parent="YSortRoot" unique_id=2040064568 instance=ExtResource("1_6tisa")]
 z_index = 1
 position = Vector2(112, 144)

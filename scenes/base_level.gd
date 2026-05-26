@@ -13,9 +13,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		var object = grid_manager.get_object_at_position(get_global_mouse_position())
 		var movable_cells = grid_manager.get_movable_cells(player.area_2d.get_child(0).global_position, 4)
 		var path = grid_manager.get_path_to_position(player.area_2d.get_child(0).global_position, get_global_mouse_position())
-				
-		print(object is Enemy)
-		
+
 		if object is Enemy:
 			player.shoot(object)
 		
