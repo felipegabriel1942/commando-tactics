@@ -15,15 +15,13 @@ func attack(attacker, target) -> void:
 	var direction := _get_direction_to_target(attacker, target)
 	
 	attacker.update_visuals(direction)
-	
-	var cover_bonus := get_cover_bonus(attacker.occupied_cells.get(0), target.occupied_cells.get(0))
-		
+
 	# calcular se acertou ou não aqui
-	var hit := did_hit(95, cover_bonus)
+	var dit_hit := roll_dice() <= hit_chance(attacker, target)
 		
-	await attacker.fire_burst(target, hit)
+	await attacker.fire_burst(target, dit_hit)
 	
-	if hit:
+	if dit_hit:
 		target.take_damage()
 	
 	attacker.is_shooting = false
@@ -35,8 +33,27 @@ func _get_direction_to_target(attacker: Node2D, target: Node2D) -> Vector2:
 	
 	return Vector2(direction).normalized()
 
-func _get_facing_direction(direction: Vector2) -> FacingDirectionEnum.FacingDirection:
-	return FacingDirectionEnum.FACING_DIRECTION_MAP[direction]
+func get_attack_direction(
+	attacker: Vector2i,
+	target: Vector2i
+) -> Vector2i:
+	var delta = target - attacker
+	
+	if abs(delta.x) > abs(delta.y):
+		return Vector2i(sign(delta.x), 0)
+	
+	return Vector2i(0, sign(delta.y))
+	
+# Mover depois para um serviço/manager
+func roll_dice() -> int:
+	return randi_range(1, 100)
+	
+func hit_chance(attacker, target) -> int:
+	var attacker_accuracy = 95
+	var target_evasion = 5
+	var cover_bonus = get_cover_bonus(attacker.occupied_cells.get(0), target.occupied_cells.get(0))
+	
+	return clamp(attacker_accuracy - (target_evasion + cover_bonus), 5, 95)
 	
 func get_cover_bonus(
 	attacker_cell: Vector2i,
@@ -63,23 +80,3 @@ func get_cover_bonus(
 			return 80
 	
 	return 0
-
-func get_attack_direction(
-	attacker: Vector2i,
-	target: Vector2i
-) -> Vector2i:
-	var delta = target - attacker
-	
-	if abs(delta.x) > abs(delta.y):
-		return Vector2i(sign(delta.x), 0)
-	
-	return Vector2i(0, sign(delta.y))
-	
-# Mover depois para um serviço/manager
-func did_hit(attacker_accuracy: int, target_evasion: int) -> bool:
-	var hit_chance = attacker_accuracy - target_evasion
-	
-	hit_chance = clamp(hit_chance, 5, 95)
-	var roll = randi_range(1, 100)
-	
-	return roll <= hit_chance
