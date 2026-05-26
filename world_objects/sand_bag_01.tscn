@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://e38hxs0c7xhw" path="res://assets/sprites/Tileset/tileset.png" id="1_ednry"]
 [ext_resource type="Script" uid="uid://34kk10a5gcnm" path="res://world_objects/world_object.gd" id="1_nnlpg"]
+[ext_resource type="Resource" uid="uid://c4su80555jt22" path="res://data/objects/sand_bag.tres" id="2_k0b4y"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ednry"]
 size = Vector2(16, 16)
@@ -10,6 +11,7 @@ size = Vector2(16, 16)
 z_index = 1
 y_sort_enabled = true
 script = ExtResource("1_nnlpg")
+data = ExtResource("2_k0b4y")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=879920492]
 texture = ExtResource("1_ednry")

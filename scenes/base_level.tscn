@@ -119,7 +119,7 @@ position = Vector2(256, 32)
 position = Vector2(144, 80)
 
 [node name="EnemyAssault2" parent="YSortRoot/Enemies" unique_id=65415751 instance=ExtResource("7_u6ue0")]
-position = Vector2(192, 16)
+position = Vector2(224, 96)
 
 [node name="EnemyAssault3" parent="YSortRoot/Enemies" unique_id=673828209 instance=ExtResource("7_u6ue0")]
 position = Vector2(112, 16)

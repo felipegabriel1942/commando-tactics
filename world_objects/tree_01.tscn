@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://34kk10a5gcnm" path="res://world_objects/world_object.gd" id="1_ln5gk"]
 [ext_resource type="Texture2D" uid="uid://e38hxs0c7xhw" path="res://assets/sprites/Tileset/tileset.png" id="1_q6qsk"]
+[ext_resource type="Resource" uid="uid://c1hl6nq5610mh" path="res://data/objects/tree_data.tres" id="2_1bryd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q6qsk"]
 size = Vector2(32, 16)
@@ -10,6 +11,7 @@ size = Vector2(32, 16)
 z_index = 1
 y_sort_enabled = true
 script = ExtResource("1_ln5gk")
+data = ExtResource("2_1bryd")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=857338795]
 texture = ExtResource("1_q6qsk")

@@ -1,6 +1,8 @@
 extends Node2D
 class_name WorldObject
 
+@export var data: ObjectData
+
 @onready var area_2d: Area2D = $Area2D
 
 var occupied_cells: Array[Vector2i] = []

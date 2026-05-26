@@ -212,3 +212,9 @@ func get_object_at_position(position: Vector2) -> Node2D:
 		return occupied_cells[local_to_map(position)]
 	else:
 		return null
+
+func get_object_at_cell(cell: Vector2i) -> Node2D:
+	if occupied_cells.has(cell):
+		return occupied_cells[cell]
+	else:
+		return null

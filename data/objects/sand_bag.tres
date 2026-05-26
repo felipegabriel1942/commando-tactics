@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="ObjectData" format=3 uid="uid://c4su80555jt22"]
+
+[ext_resource type="Script" uid="uid://bx88pm2jjfulp" path="res://scripts/object_data.gd" id="1_ctxpx"]
+
+[resource]
+script = ExtResource("1_ctxpx")
+object_name = "Sand Bag"
+metadata/_custom_type_script = "uid://bx88pm2jjfulp"

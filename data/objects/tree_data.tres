@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="ObjectData" format=3 uid="uid://c1hl6nq5610mh"]
+
+[ext_resource type="Script" uid="uid://bx88pm2jjfulp" path="res://scripts/object_data.gd" id="1_qg1gg"]
+
+[resource]
+script = ExtResource("1_qg1gg")
+object_name = "Tree"
+cover_type = 1
+metadata/_custom_type_script = "uid://bx88pm2jjfulp"

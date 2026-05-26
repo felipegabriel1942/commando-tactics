@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://dkjed8rm7fifl" path="res://assets/sprites/Characters/Enemies/enemy_assault_rifle.png" id="1_6naxh"]
 [ext_resource type="Script" uid="uid://sbr0nd4bhpv3" path="res://enemies/enemy.gd" id="1_l8p1m"]
-[ext_resource type="Resource" uid="uid://dwyybcwoll3q4" path="res://data/enemy_assault_data.tres" id="2_gc12c"]
+[ext_resource type="Resource" uid="uid://dwyybcwoll3q4" path="res://data/characters/enemy_assault_data.tres" id="2_gc12c"]
 [ext_resource type="Shader" uid="uid://c4qxiegmdr0ke" path="res://resources/flash.gdshader" id="2_mw2g8"]
 [ext_resource type="PackedScene" uid="uid://bk2icqhlqbxwq" path="res://core/components/health_component.tscn" id="5_3eowc"]
 

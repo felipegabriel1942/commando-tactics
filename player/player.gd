@@ -95,32 +95,13 @@ func _move_to(target_position: Vector2) -> void:
 			
 	await tween.finished
 	
-func shoot(target: Enemy) -> void:
-	if is_shooting:
-		return
-	
-	is_shooting = true
-	
-	var direction := _get_direction_to_target(target)
+func update_visuals(direction: Vector2) -> void:
 	facing_direction = _get_facing_direction(Vector2(round(direction.x), round(direction.y)))
-	
 	muzzle.position = MUZZLE_POSITIONS[facing_direction]
 	
-	# calcular se acertou ou não aqui
-	var hit := did_hit(95, 5)
-	
-	_update_attack_visuals()
-	
-	await _fire_burst(target, hit)
-	
-	if hit:
-		target.take_damage()
-	
-	is_shooting = false
-	
-func _update_attack_visuals() -> void:
 	animated_sprite_2d.flip_h = _should_flip()
 	animated_sprite_2d.play(SHOOT_ANIMATIONS[facing_direction])
+	
 
 func _should_flip() -> bool:
 	return facing_direction in [
@@ -139,7 +120,7 @@ func _get_direction_to_target(target: Enemy) -> Vector2:
 func _get_facing_direction(direction: Vector2) -> FacingDirectionEnum.FacingDirection:
 	return FacingDirectionEnum.FACING_DIRECTION_MAP[direction]
 
-func _fire_burst(target: Enemy, hit: bool) -> void:
+func fire_burst(target: Enemy, hit: bool) -> void:
 	for i in BURST_COUNT:
 		_spawn_bullet(target, hit)
 		
@@ -155,15 +136,6 @@ func _spawn_bullet(target: Enemy, hit: bool) -> void:
 	bullet.hit = hit
 
 	get_tree().current_scene.add_child(bullet)
-
-# Mover depois para um serviço/manager
-func did_hit(attacker_accuracy: int, target_evasion: int) -> bool:
-	var hit_chance = attacker_accuracy - target_evasion
-	
-	hit_chance = clamp(hit_chance, 5, 95)
-	var roll = randi_range(1, 100)
-	
-	return roll <= hit_chance
 
 func _on_body_entered(body: Node2D) -> void:
 	if body is TileMapLayer:

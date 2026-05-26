@@ -5,6 +5,11 @@ class_name BaseLevel
 @onready var grid_manager: GridManager = $GridManager
 @onready var ground_map_layer: TileMapLayer = $YSortRoot/RootMapLayer/GroundMapLayer
 
+var combat_service: CombatService
+
+func _ready() -> void:
+	combat_service = CombatService.new(grid_manager)
+
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("select"):
 		if player.is_moving or player.is_shooting:
@@ -15,7 +20,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		var path = grid_manager.get_path_to_position(player.area_2d.get_child(0).global_position, get_global_mouse_position())
 
 		if object is Enemy:
-			player.shoot(object)
+			combat_service.attack(player, object)
 		
 		# move o jogador até a celula selecionada
 		if !path.is_empty():
