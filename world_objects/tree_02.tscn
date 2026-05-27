@@ -4,6 +4,9 @@
 [ext_resource type="Script" uid="uid://34kk10a5gcnm" path="res://world_objects/world_object.gd" id="1_j7van"]
 [ext_resource type="Resource" uid="uid://c1hl6nq5610mh" path="res://data/objects/tree_data.tres" id="2_unkvl"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_unkvl"]
+size = Vector2(30, 45)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gjhjc"]
 size = Vector2(32, 16)
 
@@ -19,11 +22,20 @@ texture = ExtResource("1_gjhjc")
 region_enabled = true
 region_rect = Rect2(176, 176, 64, 64)
 
+[node name="FadeArea" type="Area2D" parent="." unique_id=342358697]
+collision_mask = 12
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FadeArea" unique_id=975564822]
+position = Vector2(0, -7.75)
+shape = SubResource("RectangleShape2D_unkvl")
+
 [node name="Area2D" type="Area2D" parent="." unique_id=1940597632]
-collision_mask = 2
+collision_mask = 14
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=886486015]
 position = Vector2(0, 24)
 shape = SubResource("RectangleShape2D_gjhjc")
 
+[connection signal="area_entered" from="FadeArea" to="." method="_on_fade_area_entered"]
+[connection signal="area_exited" from="FadeArea" to="." method="_on_fade_area_exited"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_body_entered"]

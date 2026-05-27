@@ -37,6 +37,7 @@ y_sort_enabled = true
 y_sort_enabled = true
 
 [node name="Tree01" parent="YSortRoot/WorldObjects/Trees" unique_id=1591947738 instance=ExtResource("2_0n1tn")]
+position = Vector2(32, 16)
 
 [node name="Tree02" parent="YSortRoot/WorldObjects/Trees" unique_id=1797740805 instance=ExtResource("3_oox4p")]
 position = Vector2(16, 96)
@@ -48,7 +49,7 @@ position = Vector2(304, 80)
 position = Vector2(112, 128)
 
 [node name="Tree05" parent="YSortRoot/WorldObjects/Trees" unique_id=2138125671 instance=ExtResource("2_0n1tn")]
-position = Vector2(192, 80)
+position = Vector2(224, 112)
 
 [node name="SandBags" type="Node2D" parent="YSortRoot/WorldObjects" unique_id=420447316]
 y_sort_enabled = true

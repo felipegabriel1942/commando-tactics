@@ -15,7 +15,7 @@ func _process(delta: float) -> void:
 	
 	if object != null and object is Enemy:
 		var hit_chance = combat_service.hit_chance(player, object)
-		print(hit_chance)
+		# print(hit_chance)
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("select"):

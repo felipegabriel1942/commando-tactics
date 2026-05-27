@@ -4,6 +4,9 @@
 [ext_resource type="Texture2D" uid="uid://e38hxs0c7xhw" path="res://assets/sprites/Tileset/tileset.png" id="1_q6qsk"]
 [ext_resource type="Resource" uid="uid://c1hl6nq5610mh" path="res://data/objects/tree_data.tres" id="2_1bryd"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1bryd"]
+size = Vector2(30, 45)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q6qsk"]
 size = Vector2(32, 16)
 
@@ -15,16 +18,24 @@ data = ExtResource("2_1bryd")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=857338795]
 texture = ExtResource("1_q6qsk")
-centered = false
 offset = Vector2(0, -4)
 region_enabled = true
 region_rect = Rect2(112, 176, 64, 64)
 
+[node name="FadeArea" type="Area2D" parent="." unique_id=859767961]
+position = Vector2(0, -8)
+collision_mask = 12
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FadeArea" unique_id=1251258406]
+shape = SubResource("RectangleShape2D_1bryd")
+
 [node name="Area2D" type="Area2D" parent="." unique_id=871590265]
+position = Vector2(0, 24)
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=853487938]
-position = Vector2(32, 56)
 shape = SubResource("RectangleShape2D_q6qsk")
 
+[connection signal="area_entered" from="FadeArea" to="." method="_on_fade_area_entered"]
+[connection signal="area_exited" from="FadeArea" to="." method="_on_fade_area_exited"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_body_entered"]
